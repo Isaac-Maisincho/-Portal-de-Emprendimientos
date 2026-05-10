@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Emprendimientos ESPE</title>
+</head>
+<body>
+
+    <header>
+        <h1>Portal de Emprendimientos ESPE</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#emprendimientos">Emprendimientos</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+
+        <h2>Bienvenidos al Portal de Emprendimientos ESPE</h2>
+
+        <p>
+            Este portal permite registrar, visualizar y administrar
+            los emprendimientos desarrollados dentro de la comunidad ESPE.
+        </p>
+
+        <p>
+            El ecosistema emprendedor de la ESPE impulsa proyectos innovadores
+            en áreas tecnológicas, educativas, ambientales, alimenticias y de servicios.
+        </p>
+
+    </section>
+
+    <section id="emprendimientos">
+
+        <h2>Catálogo de Emprendimientos</h2>
+
+        <div id="contenedorCards">
+
+            <article>
+                <h3>Tech Solutions</h3>
+                <p><strong>Categoría:</strong> Tecnología</p>
+                <p>Desarrollo de aplicaciones web.</p>
+                <p><strong>Responsable:</strong> Juan Pérez</p>
+            </article>
+
+            <article>
+                <h3>Eco Green</h3>
+                <p><strong>Categoría:</strong> Ambiente</p>
+                <p>Productos ecológicos y reciclables.</p>
+                <p><strong>Responsable:</strong> María López</p>
+            </article>
+
+        </div>
+
+    </section>
+
+    <section id="registro">
+
+        <h2>Registro de Emprendimientos</h2>
+
+        <form id="formEmprendimiento">
+
+            <label for="codigo">Codigo</label>
+            <input type="text" id="codigo">
+
+            <label for="nombre">Nombre del Emprendimiento</label>
+            <input type="text" id="nombre">
+
+            <label for="responsable">Responsable</label>
+            <input type="text" id="responsable">
+
+            <label for="carrera">Carrera / Departamento</label>
+            <input type="text" id="carrera">
+
+            <label for="categoria">Categoria</label>
+            <select id="categoria">
+                <option value="">Seleccione</option>
+                <option>Tecnologia</option>
+                <option>Alimentos</option>
+                <option>Servicios</option>
+                <option>Educacion</option>
+                <option>Ambiente</option>
+                <option>Artesanias</option>
+                <option>Salud</option>
+                <option>Otro</option>
+            </select>
+
+            <label for="producto">Producto o Servicio</label>
+            <input type="text" id="producto">
+
+            <label for="ventas">Ventas Mensuales Estimadas</label>
+            <input type="number" id="ventas">
+
+            <label for="estado">Estado</label>
+            <select id="estado">
+                <option value="">Seleccione</option>
+                <option>Idea</option>
+                <option>Prototipo</option>
+                <option>En marcha</option>
+                <option>En crecimiento</option>
+            </select>
+
+            <button type="submit">Registrar</button>
+            <button type="reset">Restablecer</button>
+
+        </form>
+
+    </section>
+
+    <section id="dashboard">
+
+        <h2>Dashboard</h2>
+
+        <div>
+
+            <h3>Estadisticas Generales</h3>
+
+            <p>Total de emprendimientos: <span id="totalEmprendimientos">0</span></p>
+
+            <p>Total ventas mensuales: <span id="totalVentas">0</span></p>
+
+            <p>Promedio ventas: <span id="promedioVentas">0</span></p>
+
+            <p>Mayor venta: <span id="mayorVenta">Ninguno</span></p>
+
+        </div>
+
+        <div>
+
+            <label>Buscar:</label>
+            <input type="text" id="buscar">
+
+            <label>Filtrar categoria:</label>
+            <select id="filtroCategoria">
+                <option value="">Todas</option>
+                <option>Tecnologia</option>
+                <option>Alimentos</option>
+                <option>Servicios</option>
+                <option>Educacion</option>
+                <option>Ambiente</option>
+                <option>Artesanias</option>
+                <option>Salud</option>
+                <option>Otro</option>
+            </select>
+
+        </div>
+
+        <table border="1">
+
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Responsable</th>
+                    <th>Categoria</th>
+                    <th>Ventas</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="tablaEmprendimientos">
+
+            </tbody>
+
+        </table>
+
+    </section>
+>
+    <section id="contacto">
+
+        <h2>Contacto</h2>
+
+        <form>
+
+            <label for="nombreContacto">Nombre</label>
+            <input type="text" id="nombreContacto">
+
+            <label for="correoContacto">Correo</label>
+            <input type="email" id="correoContacto">
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje"></textarea>
+
+            <button type="submit">Enviar</button>
+
+        </form>
+
+        <h3>Información Institucional</h3>
+
+        <p>Universidad de las Fuerzas Armadas ESPE</p>
+        <p>Correo: emprendimientos@espe.edu.ec</p>
+        <p>Teléfono: 5747467467</p>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Portal de Emprendimientos ESPE</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
