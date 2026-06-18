@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ESPE Emprende – Portal de Emprendimientos Universitarios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">ES</div>
+    <div class="nav-title">ESPE <span>Emprende</span></div>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+  <nav>
+    <ul id="nav-list">
+      <li><a href="#" class="nav-link active" data-section="inicio">🏠 Inicio</a></li>
+      <li><a href="#" class="nav-link" data-section="emprendimientos">🚀 Emprendimientos</a></li>
+      <li><a href="#" class="nav-link" data-section="registro">📝 Registro</a></li>
+      <li><a href="#" class="nav-link" data-section="dashboard">📊 Dashboard</a></li>
+      <li><a href="#" class="nav-link" data-section="contacto">✉️ Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section id="inicio" class="section active">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Universidad de las Fuerzas Armadas – ESPE</div>
+      <h1>Ecosistema <em>Emprendedor</em><br>ESPE 2025</h1>
+      <p>Portal oficial para registrar, visualizar y analizar los emprendimientos universitarios de la ESPE. Conectamos ideas con oportunidades y talentos con el mercado.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="showSection('registro')">+ Registrar Emprendimiento</button>
+        <button class="btn btn-outline" onclick="showSection('emprendimientos')">Ver Catálogo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-strip" id="home-stats">
+    <div class="stat-cell">
+      <div class="stat-number" id="stat-total">0</div>
+      <div class="stat-label">Emprendimientos registrados</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number" id="stat-categorias">0</div>
+      <div class="stat-label">Categorías activas</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number" id="stat-ventas">$0</div>
+      <div class="stat-label">Ventas totales estimadas / mes</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-number" id="stat-promedio">$0</div>
+      <div class="stat-label">Promedio de ventas / emprendimiento</div>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>¿Qué es el ecosistema <span>ESPE Emprende?</span></h2>
+      <p>La Universidad de las Fuerzas Armadas ESPE impulsa la cultura emprendedora a través de programas de innovación, incubadoras de proyectos y vinculación con el sector productivo nacional.</p>
+      <p>Este portal centraliza todos los emprendimientos generados por estudiantes, docentes y graduados, facilitando su visibilidad, seguimiento y crecimiento sostenible.</p>
+      <div class="pillar-list">
+        <div class="pillar-item"><span class="pillar-icon">💡</span> Innovación y desarrollo tecnológico</div>
+        <div class="pillar-item"><span class="pillar-icon">🤝</span> Vinculación con la colectividad</div>
+        <div class="pillar-item"><span class="pillar-icon">📈</span> Crecimiento económico sostenible</div>
+        <div class="pillar-item"><span class="pillar-icon">🌱</span> Impacto social y ambiental positivo</div>
+      </div>
+    </div>
+    <div class="about-banner">
+      <span class="big-num">15+</span>
+      <p>Años fomentando el espíritu emprendedor en la comunidad universitaria ESPE a nivel nacional.</p>
+      <div class="campus-container">
+        <div class="campus-tag">🏅 Sede Sangolquí</div>
+        <div class="campus-tag">🏅 Extensión Latacunga</div>
+        <div class="campus-tag">🏅 Extensión Quito</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="emprendimientos" class="section">
+  <div class="section-header">
+    <h2>Catálogo de <span>Emprendimientos</span></h2>
+    <p>Explora los proyectos registrados por la comunidad ESPE</p>
+  </div>
+
+  <div class="catalog-controls">
+    <div class="search-box">
+      <span class="icon">🔍</span>
+      <input type="text" id="catalog-search" placeholder="Buscar por nombre o código..." oninput="renderCards()">
+    </div>
+    <select class="filter-select" id="catalog-filter" onchange="renderCards()">
+      <option value="">Todas las categorías</option>
+      <option>Tecnología</option>
+      <option>Alimentos</option>
+      <option>Servicios</option>
+      <option>Educación</option>
+      <option>Ambiente</option>
+      <option>Artesanías</option>
+      <option>Salud</option>
+      <option>Otro</option>
+    </select>
+  </div>
+
+  <div class="cards-grid" id="cards-grid"></div>
+</section>
+
+<section id="registro" class="section">
+  <div class="section-header">
+    <h2>Registrar <span>Emprendimiento</span></h2>
+    <p>Completa el formulario para añadir tu proyecto al catálogo ESPE</p>
+  </div>
+
+  <div class="form-container">
+    <div class="form-card">
+      <h3 id="form-title">Nuevo Emprendimiento</h3>
+      <p class="form-subtitle">Todos los campos marcados con <span style="color:var(--danger)">*</span> son obligatorios</p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Código <span class="required">*</span></label>
+          <input type="text" id="f-codigo" placeholder="EJ: EMP-2025-001" />
+          <span class="error-msg" id="err-codigo">El código es requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Nombre del Emprendimiento <span class="required">*</span></label>
+          <input type="text" id="f-nombre" placeholder="Nombre del proyecto" />
+          <span class="error-msg" id="err-nombre">El nombre es requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Responsable <span class="required">*</span></label>
+          <input type="text" id="f-responsable" placeholder="Nombre completo" />
+          <span class="error-msg" id="err-responsable">El responsable es requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Carrera / Departamento <span class="required">*</span></label>
+          <input type="text" id="f-carrera" placeholder="Ej: Ingeniería en Software" />
+          <span class="error-msg" id="err-carrera">La carrera es requerida.</span>
+        </div>
+        <div class="form-group">
+          <label>Categoría <span class="required">*</span></label>
+          <select id="f-categoria">
+            <option value="">Seleccionar...</option>
+            <option>Tecnología</option>
+            <option>Alimentos</option>
+            <option>Servicios</option>
+            <option>Educación</option>
+            <option>Ambiente</option>
+            <option>Artesanías</option>
+            <option>Salud</option>
+            <option>Otro</option>
+          </select>
+          <span class="error-msg" id="err-categoria">Selecciona una categoría.</span>
+        </div>
+        <div class="form-group">
+          <label>Estado <span class="required">*</span></label>
+          <select id="f-estado">
+            <option value="">Seleccionar...</option>
+            <option>Idea</option>
+            <option>Prototipo</option>
+            <option>En marcha</option>
+            <option>En crecimiento</option>
+          </select>
+          <span class="error-msg" id="err-estado">Selecciona un estado.</span>
+        </div>
+        <div class="form-group">
+          <label>Producto o Servicio <span class="required">*</span></label>
+          <input type="text" id="f-producto" placeholder="¿Qué ofrece tu emprendimiento?" />
+          <span class="error-msg" id="err-producto">Este campo es requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Ventas Mensuales Estimadas (USD)</label>
+          <input type="number" id="f-ventas" placeholder="0.00" min="0" step="0.01" />
+        </div>
+        <div class="form-group full">
+          <label>Descripción <span class="required">*</span></label>
+          <textarea id="f-descripcion" placeholder="Describe brevemente tu emprendimiento, su propuesta de valor y mercado objetivo..."></textarea>
+          <span class="error-msg" id="err-descripcion">La descripción es requerida.</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input type="hidden" id="f-edit-index" value="">
+        <button class="btn btn-outline btn-reset-custom" onclick="resetForm()">↺ Restablecer</button>
+        <button class="btn btn-green" onclick="submitForm()">💾 Guardar Emprendimiento</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="section">
+  <div class="section-header">
+    <h2><span>Dashboard</span> de Emprendimientos</h2>
+    <p>Estadísticas y gestión completa del ecosistema emprendedor</p>
+  </div>
+
+  <div class="dashboard-body">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Emprendimientos</div>
+        <div class="kpi-value" id="kpi-total">0</div>
+        <div class="kpi-sub">registros activos</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Ventas Totales / Mes</div>
+        <div class="kpi-value" id="kpi-ventas">$0</div>
+        <div class="kpi-sub">estimadas en USD</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Promedio de Ventas</div>
+        <div class="kpi-value" id="kpi-promedio">$0</div>
+        <div class="kpi-sub">por emprendimiento</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Mayor Vendedor</div>
+        <div class="kpi-value" id="kpi-top" style="font-size:1rem;">—</div>
+        <div class="kpi-sub" id="kpi-top-ventas">sin datos</div>
+      </div>
+    </div>
+
+    <div class="dash-controls">
+      <div class="search-box" style="max-width:280px">
+        <span class="icon">🔍</span>
+        <input type="text" id="dash-search" placeholder="Buscar por nombre o código..." oninput="renderTable()">
+      </div>
+      <select class="filter-select" id="dash-filter-cat" onchange="renderTable()">
+        <option value="">Todas las categorías</option>
+        <option>Tecnología</option>
+        <option>Alimentos</option>
+        <option>Servicios</option>
+        <option>Educación</option>
+        <option>Ambiente</option>
+        <option>Artesanías</option>
+        <option>Salud</option>
+        <option>Otro</option>
+      </select>
+      <select class="filter-select" id="dash-filter-est" onchange="renderTable()" style="min-width:140px">
+        <option value="">Todos los estados</option>
+        <option>Idea</option>
+        <option>Prototipo</option>
+        <option>En marcha</option>
+        <option>En crecimiento</option>
+      </select>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Responsable</th>
+            <th>Carrera</th>
+            <th>Categoría</th>
+            <th>Estado</th>
+            <th>Ventas/mes</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="section">
+  <div class="section-header">
+    <h2>Centro de <span>Contacto</span></h2>
+    <p>Escríbenos para más información sobre el ecosistema emprendedor ESPE</p>
+  </div>
+
+  <div class="contact-wrapper">
+    <div class="contact-info-card">
+      <h3>🏛️ ESPE Emprende</h3>
+      <div class="contact-detail">
+        <span class="contact-icon">📍</span>
+        <div><strong>Dirección</strong>Av. General Rumiñahui s/n, Sangolquí, Pichincha, Ecuador</div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">📞</span>
+        <div><strong>Teléfono</strong>(+593) 2-398-9400 ext. 1234</div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">✉️</span>
+        <div><strong>Correo</strong>emprende@espe.edu.ec</div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">🕐</span>
+        <div><strong>Horario de atención</strong>Lunes a Viernes: 08h00 – 17h00</div>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-icon">🌐</span>
+        <div><strong>Sitio web</strong>www.espe.edu.ec</div>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-btn">📘 Facebook</a>
+        <a href="#" class="social-btn">🐦 Twitter</a>
+        <a href="#" class="social-btn">📸 Instagram</a>
+      </div>
+    </div>
+
+    <div class="contact-form-card">
+      <h3>Envíanos un mensaje</h3>
+      <p class="form-subtitle">Te responderemos en un plazo máximo de 48 horas hábiles.</p>
+      <div class="contact-form-grid">
+        <div class="form-group">
+          <label>Nombre <span class="required">*</span></label>
+          <input type="text" id="c-nombre" placeholder="Tu nombre completo"/>
+          <span class="error-msg" id="c-err-nombre">Campo requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Correo Electrónico <span class="required">*</span></label>
+          <input type="email" id="c-email" placeholder="correo@ejemplo.com"/>
+          <span class="error-msg" id="c-err-email">Ingresa un correo válido.</span>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Asunto <span class="required">*</span></label>
+          <input type="text" id="c-asunto" placeholder="¿En qué podemos ayudarte?"/>
+          <span class="error-msg" id="c-err-asunto">Campo requerido.</span>
+        </div>
+        <div class="form-group" style="grid-column:1/-1">
+          <label>Mensaje <span class="required">*</span></label>
+          <textarea id="c-mensaje" rows="5" placeholder="Escribe tu consulta aquí..."></textarea>
+          <span class="error-msg" id="c-err-mensaje">El mensaje es requerido.</span>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn btn-green" onclick="sendContact()">📤 Enviar Mensaje</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Universidad de las Fuerzas Armadas – ESPE</span> · Portal de Emprendimientos Universitarios · Todos los derechos reservados</p>
+</footer>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>✏️ Editar Emprendimiento</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Código <span class="required">*</span></label>
+          <input type="text" id="m-codigo" />
+          <span class="error-msg" id="m-err-codigo">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Nombre <span class="required">*</span></label>
+          <input type="text" id="m-nombre" />
+          <span class="error-msg" id="m-err-nombre">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Responsable <span class="required">*</span></label>
+          <input type="text" id="m-responsable" />
+          <span class="error-msg" id="m-err-responsable">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Carrera / Departamento <span class="required">*</span></label>
+          <input type="text" id="m-carrera" />
+          <span class="error-msg" id="m-err-carrera">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Categoría <span class="required">*</span></label>
+          <select id="m-categoria">
+            <option value="">Seleccionar...</option>
+            <option>Tecnología</option><option>Alimentos</option>
+            <option>Servicios</option><option>Educación</option>
+            <option>Ambiente</option><option>Artesanías</option>
+            <option>Salud</option><option>Otro</option>
+          </select>
+          <span class="error-msg" id="m-err-categoria">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Estado <span class="required">*</span></label>
+          <select id="m-estado">
+            <option value="">Seleccionar...</option>
+            <option>Idea</option><option>Prototipo</option>
+            <option>En marcha</option><option>En crecimiento</option>
+          </select>
+          <span class="error-msg" id="m-err-estado">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Producto o Servicio <span class="required">*</span></label>
+          <input type="text" id="m-producto" />
+          <span class="error-msg" id="m-err-producto">Requerido.</span>
+        </div>
+        <div class="form-group">
+          <label>Ventas Mensuales (USD)</label>
+          <input type="number" id="m-ventas" min="0" step="0.01"/>
+        </div>
+        <div class="form-group full">
+          <label>Descripción <span class="required">*</span></label>
+          <textarea id="m-descripcion"></textarea>
+          <span class="error-msg" id="m-err-descripcion">Requerido.</span>
+        </div>
+      </div>
+      <input type="hidden" id="m-index"/>
+      <div class="form-actions">
+        <button class="btn btn-outline" style="border-color:var(--verde);color:var(--verde)" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-green" onclick="saveEdit()">💾 Guardar Cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
