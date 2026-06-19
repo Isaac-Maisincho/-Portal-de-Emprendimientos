@@ -16,7 +16,35 @@ El ecosistema técnico del proyecto se fundamenta en la trilogía estándar del 
 * **Docker & Nginx Alpine:** Empaquetado e infraestructura inmutable. Uso de un servidor web ultra ligero y de alto rendimiento basado en Linux Alpine para garantizar la portabilidad absoluta del portal.
 
 ---
+##Instrucciones para despligue del Docker
+### Construir la Imagen
+```bash
+docker build -t skrisaac/espe-emprendimientos .
+```
 
+### Ejecutar contenedor
+
+```bash
+docker run -d -p 8080:80 --name contenedor_espe skrisaac/espe-emprendimientos:latest
+```
+
+### Descargar Imagen de Docker hub
+```bash
+docker pull skrisaac/espe-emprendimientos:latest
+```
+
+### Acceso al sitio Web
+```bash
+http://localhost:8080
+```
+
+### URL de la Imagen
+
+```bash
+https://hub.docker.com/r/skrisaac/espe-emprendimientos
+```
+
+```plaintext
 📂 PORTAL-DE-EMPRENDIMIENTOS/
 ├── __MACOSX/               # Archivos de metadatos generados automáticamente por el sistema macOS
 ├── prueba/                 # Directorio de respaldo con versiones preliminares del frontend
@@ -33,5 +61,5 @@ El ecosistema técnico del proyecto se fundamenta en la trilogía estándar del 
 └── README.md               # Documentación técnica del proyecto 
 
 
-##Instrucciones para despligue del Docker
+
 
