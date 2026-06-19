@@ -402,6 +402,19 @@ tbody tr:last-child { border-bottom: none; }
   display: flex; align-items: flex-start; gap: .8rem;
   margin-bottom: 1.2rem; font-size: .92rem;
 }
+
+/* === NUEVO CAMBIO PARA QUE EL LINK SE VEA PERFECTO === */
+.contact-detail a {
+  color: var(--blanco, #ffffff);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color var(--transition, 0.2s ease);
+}
+.contact-detail a:hover {
+  color: var(--amarillo);
+}
+/* ==================================================== */
+
 .contact-icon { font-size: 1.3rem; margin-top: .1rem; flex-shrink: 0; }
 .contact-detail strong { display: block; font-size: .75rem; letter-spacing: .4px; text-transform: uppercase; opacity: .7; margin-bottom: .15rem; }
 .social-links { display: flex; gap: .7rem; margin-top: 1.5rem; }
